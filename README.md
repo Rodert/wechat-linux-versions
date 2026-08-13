@@ -17,9 +17,9 @@ GitHub Actions 每天从 [微信 Linux 官网](https://linux.weixin.qq.com/) 读
 
 ## 相关项目
 
+- [Android 微信历史版本](https://github.com/Rodert/wechat-android-versions)
 - [Windows 微信历史版本](https://github.com/Rodert/wechat-win-versions)
 - [macOS 微信历史版本](https://github.com/Rodert/wechat-mac-versions)
-- [Android 微信历史版本](https://github.com/Rodert/wechat-android-versions)
-- [QQ 历史版本](https://github.com/Rodert/qq-versions)
+- [Linux 微信历史版本](https://github.com/Rodert/wechat-linux-versions)
 
 微信及其商标归腾讯所有；本项目仅对官网公开安装包做历史归档。
