@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="微信 Linux 历史版本下载">
+  <title>WeChat Linux Versions</title>
+  <style>
+    :root { --bg:#101712; --panel:#172219; --line:#376645; --text:#e4ede6; --muted:#9eb1a2; --green:#7fe36e; --cyan:#82dced; --yellow:#f2d675; --red:#ff8a80; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-width:320px; background:var(--bg); color:var(--text); font:14px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+    a { color:var(--cyan); }
+    .shell { width:min(1120px, calc(100% - 32px)); margin:32px auto; }
+    header, .command, .stat, .release, .state, footer { border:1px solid var(--line); background:var(--panel); }
+    header { padding:26px; border-left:4px solid var(--green); }
+    .prompt { color:var(--green); font-weight:700; }
+    h1 { margin:8px 0; color:var(--green); font-size:clamp(25px, 5vw, 42px); letter-spacing:0; }
+    p { margin:0; color:var(--muted); }
+    nav { display:flex; flex-wrap:wrap; gap:18px; margin-top:20px; }
+    nav a { text-decoration:none; border-bottom:1px solid transparent; }
+    nav a:hover { color:var(--green); border-color:var(--green); }
+    .command { margin:20px 0; padding:12px 16px; color:var(--cyan); }
+    .stats { display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin-bottom:20px; }
+    .stat { padding:14px; }
+    .stat small { display:block; color:var(--muted); }
+    .stat strong { color:var(--green); font-size:20px; overflow-wrap:anywhere; }
+    .release { margin-bottom:16px; }
+    .release-head { display:flex; gap:12px; justify-content:space-between; align-items:center; flex-wrap:wrap; padding:14px 18px; background:#0c130e; border-bottom:1px solid var(--line); }
+    .version { color:var(--cyan); font-size:17px; font-weight:700; }
+    .latest { color:#102010; background:var(--green); padding:2px 7px; font-size:11px; font-weight:700; }
+    time { color:var(--muted); font-size:12px; }
+    .release-body { padding:18px; }
+    .notes { white-space:pre-wrap; overflow-wrap:anywhere; margin:0 0 16px; padding:12px; background:#0d150f; color:var(--muted); border-left:2px solid var(--yellow); }
+    .packages { display:grid; grid-template-columns:repeat(auto-fill, minmax(245px, 1fr)); gap:10px; }
+    .package { border:1px solid #2b4d35; padding:12px; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:8px; align-items:center; }
+    .package-name { overflow-wrap:anywhere; font-weight:700; }
+    .meta { color:var(--muted); font-size:12px; }
+    .type { grid-column:1; color:var(--yellow); font-size:12px; }
+    .download { grid-column:2; grid-row:1 / span 2; background:var(--green); color:#0d1a0e; text-decoration:none; padding:8px 10px; font-weight:700; }
+    .download:hover { background:var(--cyan); }
+    .state { padding:36px 18px; text-align:center; color:var(--muted); }
+    .error { border-color:var(--red); color:var(--red); }
+    footer { margin-top:30px; padding:16px 18px; color:var(--muted); font-size:12px; }
+    @media (max-width:640px) { .shell { width:min(100% - 20px, 1120px); margin:10px auto; } header { padding:20px 16px; } .stats { grid-template-columns:1fr; } .release-head { align-items:flex-start; flex-direction:column; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div class="prompt">$ wechat-linux-versions --archive</div>
+      <h1>WeChat Linux Versions</h1>
+      <p>微信 Linux 历史安装包，按 CPU 架构和发行格式归档。</p>
+      <nav>
+        <a href="https://github.com/Rodert/wechat-linux-versions" target="_blank" rel="noreferrer">GitHub Repository</a>
+        <a href="https://github.com/Rodert/wechat-linux-versions/releases" target="_blank" rel="noreferrer">All Releases</a>
+        <a href="https://github.com/Rodert/wechat-win-versions" target="_blank" rel="noreferrer">Windows Versions</a>
+        <a href="https://github.com/Rodert/wechat-mac-versions" target="_blank" rel="noreferrer">macOS Versions</a>
+        <a href="https://github.com/Rodert/wechat-android-versions" target="_blank" rel="noreferrer">Android Versions</a>
+      </nav>
+    </header>
+    <div class="command"><span class="prompt">$</span> cat ./releases.json</div>
+    <section id="stats" class="stats" hidden></section>
+    <section id="content" class="state">正在读取 Release 数据...</section>
+    <footer>微信及其商标归腾讯所有。本项目仅归档官网公开安装包。Powered by GitHub Pages.</footer>
+  </main>
+  <script>
+    const content = document.getElementById('content');
+    const stats = document.getElementById('stats');
+    const escapeHtml = value => { const node = document.createElement('span'); node.textContent = value; return node.innerHTML; };
+    const formatSize = bytes => { if (!bytes) return '0 B'; const units = ['B', 'KB', 'MB', 'GB']; const index = Math.min(Math.floor(Math.log(bytes) / Math.log(1024)), units.length - 1); return `${(bytes / 1024 ** index).toFixed(index ? 1 : 0)} ${units[index]}`; };
+    const packageKind = name => { const extension = name.endsWith('.AppImage') ? 'AppImage' : (name.split('.').pop() || 'file').toUpperCase(); const architecture = (name.match(/(x86_64|arm64|LoongArch)/i) || [])[1]; return [architecture, extension].filter(Boolean).join(' / '); };
+    const date = value => new Date(value).toLocaleString('zh-CN', { year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit' });
+    function render(releases) {
+      if (!releases.length) { content.textContent = '尚未归档任何版本。'; return; }
+      const packageCount = releases.reduce((total, release) => total + release.assets.length, 0);
+      stats.hidden = false;
+      stats.innerHTML = [['版本数量', releases.length], ['最新版本', releases[0].tag_name], ['归档文件', packageCount]].map(([label, value]) => `<div class="stat"><small>${label}</small><strong>${escapeHtml(String(value))}</strong></div>`).join('');
+      content.className = '';
+      content.innerHTML = releases.map((release, index) => {
+        const packages = release.assets.filter(asset => /\.(deb|rpm|AppImage|sha256)$/i.test(asset.name));
+        return `<article class="release"><div class="release-head"><div class="version">${escapeHtml(release.tag_name)} ${index === 0 ? '<span class="latest">LATEST</span>' : ''}</div><time>${date(release.published_at)}</time></div><div class="release-body">${release.body ? `<pre class="notes">${escapeHtml(release.body)}</pre>` : ''}<div class="packages">${packages.map(asset => `<div class="package"><div class="package-name">${escapeHtml(asset.name)}</div><div class="meta">${formatSize(asset.size)}</div><div class="type">${escapeHtml(packageKind(asset.name))}</div><a class="download" href="${asset.browser_download_url}" target="_blank" rel="noreferrer" download>下载</a></div>`).join('') || '<div class="meta">此 Release 没有可下载文件。</div>'}</div></div></article>`;
+      }).join('');
+    }
+    fetch('./releases.json', { cache:'no-store' }).then(response => { if (!response.ok) throw new Error(`HTTP ${response.status}`); return response.json(); }).then(render).catch(error => { content.className = 'state error'; content.textContent = `无法读取 Release 数据: ${error.message}`; });
+  </script>
+</body>
+</html>
