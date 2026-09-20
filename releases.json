@@ -910,7 +910,7 @@
         "state": "uploaded",
         "size": 288864760,
         "digest": "sha256:457dba02b91b031cdd4412eee074fbbffb9d9d06b1e50fc1822d34870e114990",
-        "download_count": 2,
+        "download_count": 3,
         "created_at": "2026-08-13T14:14:35Z",
         "updated_at": "2026-08-13T14:14:48Z",
         "browser_download_url": "https://github.com/Rodert/wechat-linux-versions/releases/download/v4.1.1.8/WeChatLinux_x86_64.AppImage"
