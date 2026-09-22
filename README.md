@@ -22,4 +22,6 @@ GitHub Actions 每天从 [微信 Linux 官网](https://linux.weixin.qq.com/) 读
 - [macOS 微信历史版本](https://github.com/Rodert/wechat-mac-versions)
 - [Linux 微信历史版本](https://github.com/Rodert/wechat-linux-versions)
 
+- [科学上网工具还不错](https://tinyurl.com/network-saku)
+
 微信及其商标归腾讯所有；本项目仅对官网公开安装包做历史归档。
