@@ -212,7 +212,7 @@
         "state": "uploaded",
         "size": 214995260,
         "digest": "sha256:c4fa465e9d861e11057bdd0f320947be506a1d40785b171882e42c1e9dee3107",
-        "download_count": 0,
+        "download_count": 1,
         "created_at": "2026-09-18T12:12:18Z",
         "updated_at": "2026-09-18T12:12:29Z",
         "browser_download_url": "https://github.com/Rodert/wechat-linux-versions/releases/download/v4.1.13.23/WeChatLinux_LoongArch.deb"
@@ -471,7 +471,7 @@
         "state": "uploaded",
         "size": 209059272,
         "digest": "sha256:a6d115d24dfe3ed1b7e7de16cf6cc02acef8df5668150f702ac8d8c5256405fa",
-        "download_count": 1,
+        "download_count": 3,
         "created_at": "2026-09-04T12:00:33Z",
         "updated_at": "2026-09-04T12:00:39Z",
         "browser_download_url": "https://github.com/Rodert/wechat-linux-versions/releases/download/v4.1.13.9/WeChatLinux_arm64.deb"
@@ -766,7 +766,7 @@
         "state": "uploaded",
         "size": 274496008,
         "digest": "sha256:44b1e169cdf0492d42f6bc771ac034ed3a75133c527f62cb04cc8fb6b1029d46",
-        "download_count": 1,
+        "download_count": 2,
         "created_at": "2026-08-13T14:14:36Z",
         "updated_at": "2026-08-13T14:14:46Z",
         "browser_download_url": "https://github.com/Rodert/wechat-linux-versions/releases/download/v4.1.1.8/WeChatLinux_arm64.AppImage"
@@ -802,7 +802,7 @@
         "state": "uploaded",
         "size": 189772256,
         "digest": "sha256:c3ed1a481247e6a1b166e87a66cccdee898c3ae0b76613b39bb6e9795e50929f",
-        "download_count": 13,
+        "download_count": 23,
         "created_at": "2026-08-13T14:14:36Z",
         "updated_at": "2026-08-13T14:14:44Z",
         "browser_download_url": "https://github.com/Rodert/wechat-linux-versions/releases/download/v4.1.1.8/WeChatLinux_arm64.deb"
@@ -874,7 +874,7 @@
         "state": "uploaded",
         "size": 197554716,
         "digest": "sha256:a5fa706d7936dcf55cff2ae4a59c11ccd0e0095210d602c3233ca7f14c291b94",
-        "download_count": 0,
+        "download_count": 2,
         "created_at": "2026-08-13T14:14:35Z",
         "updated_at": "2026-08-13T14:14:44Z",
         "browser_download_url": "https://github.com/Rodert/wechat-linux-versions/releases/download/v4.1.1.8/WeChatLinux_LoongArch.deb"
