@@ -68,7 +68,7 @@
         "state": "uploaded",
         "size": 1474,
         "digest": "sha256:72dbbbad437a1f0f966cb5a167d23f4301a6cdec1fa8db6d30958f2c30b1d470",
-        "download_count": 0,
+        "download_count": 1,
         "created_at": "2026-09-18T12:12:31Z",
         "updated_at": "2026-09-18T12:12:31Z",
         "browser_download_url": "https://github.com/Rodert/wechat-linux-versions/releases/download/v4.1.13.23/WeChatLinux-4.1.13.23.sha256"
