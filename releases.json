@@ -399,7 +399,7 @@
         "state": "uploaded",
         "size": 1474,
         "digest": "sha256:72dbbbad437a1f0f966cb5a167d23f4301a6cdec1fa8db6d30958f2c30b1d470",
-        "download_count": 21,
+        "download_count": 22,
         "created_at": "2026-09-18T12:12:31Z",
         "updated_at": "2026-09-18T12:12:31Z",
         "browser_download_url": "https://github.com/Rodert/wechat-linux-versions/releases/download/v4.1.13.23/WeChatLinux-4.1.13.23.sha256"
@@ -615,7 +615,7 @@
         "state": "uploaded",
         "size": 231359624,
         "digest": "sha256:b7d0f8d53e9f648bc2c77a6096a04100d008f2d9f0d3988a2a4859b5992aca0a",
-        "download_count": 47,
+        "download_count": 49,
         "created_at": "2026-09-18T12:12:29Z",
         "updated_at": "2026-09-18T12:12:36Z",
         "browser_download_url": "https://github.com/Rodert/wechat-linux-versions/releases/download/v4.1.13.23/WeChatLinux_x86_64.deb"
@@ -946,7 +946,7 @@
         "state": "uploaded",
         "size": 226602424,
         "digest": "sha256:096865e050ba0d3c1a23887227e2400bf343037b1d7d658c84c88ff26bfdc17f",
-        "download_count": 60,
+        "download_count": 61,
         "created_at": "2026-09-04T12:00:39Z",
         "updated_at": "2026-09-04T12:00:46Z",
         "browser_download_url": "https://github.com/Rodert/wechat-linux-versions/releases/download/v4.1.13.9/WeChatLinux_x86_64.deb"
@@ -1133,7 +1133,7 @@
         "state": "uploaded",
         "size": 189772256,
         "digest": "sha256:c3ed1a481247e6a1b166e87a66cccdee898c3ae0b76613b39bb6e9795e50929f",
-        "download_count": 127,
+        "download_count": 128,
         "created_at": "2026-08-13T14:14:36Z",
         "updated_at": "2026-08-13T14:14:44Z",
         "browser_download_url": "https://github.com/Rodert/wechat-linux-versions/releases/download/v4.1.1.8/WeChatLinux_arm64.deb"
